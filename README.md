@@ -35,17 +35,6 @@ For example, to predict the Weather dataset using FTP, run the following command
 
 `sh ./scripts/long_term_forecast/Weather_script/Weather_FTP.sh`
 
-## Acknowledgements
-
-We would like to thank the following GitHub repositories for their valuable codebases or datasets, which contributed significantly to time series prediction tasks:
-
-https://github.com/zhouhaoyi/Informer2020
-
-https://github.com/thuml/Time-Series-Library
-
-https://github.com/thuml/iTransformer
-
-https://github.com/Secilia-Cxy/SOFTS
 
 
 
