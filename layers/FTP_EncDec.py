@@ -84,7 +84,7 @@ class EncoderLayer(nn.Module):
                 # The output information of the three modules is fused
                 x_tree_module_fusion = torch.cat(
                     (x_channel_mix, x_channel_enhancement), dim=-1
-                )  # [batch, channel+4, d_model * 3]
+                )  # [batch, channel+4, d_model * 2]
                 x_tree_module_fusion = self.Linear_All_Fusion_ablation_0(
                     x_tree_module_fusion
                 )  # [batch, channel+4, d_model]
@@ -104,7 +104,7 @@ class EncoderLayer(nn.Module):
                 y = self.norm1(x)  # [batch, channel+4, d_model]
                 y = self.dropout(
                     self.activation(self.conv1(y.transpose(-1, 1)))
-                )  # [batch,d_ff,channel+4]  # conv1的意思为输入的通道数为d_model，输出的通道数为d_ff，卷积核大小为1，conv1接受的输入的形状为[batch, d_model（通道数），channel+4（序列长度）]
+                )  # [batch,d_ff,channel+4]  
                 y = self.dropout(
                     self.conv2(y).transpose(-1, 1)
                 )  # [batch,d_model,channel+4] => transpose [batch,channel+4,d_model]
@@ -125,7 +125,7 @@ class EncoderLayer(nn.Module):
                 # The output information of the three modules is fused
                 x_tree_module_fusion = torch.cat(
                     (x_local_and_global_fusion, x_channel_enhancement), dim=-1
-                )  # [batch, channel+4, d_model * 3]
+                )  # [batch, channel+4, d_model * 2]
                 x_tree_module_fusion = self.Linear_All_Fusion_ablation_1(
                     x_tree_module_fusion
                 )  # [batch, channel+4, d_model]
@@ -145,7 +145,7 @@ class EncoderLayer(nn.Module):
                 y = self.norm1(x)  # [batch, channel+4, d_model]
                 y = self.dropout(
                     self.activation(self.conv1(y.transpose(-1, 1)))
-                )  # [batch,d_ff,channel+4]  # conv1的意思为输入的通道数为d_model，输出的通道数为d_ff，卷积核大小为1，conv1接受的输入的形状为[batch, d_model（通道数），channel+4（序列长度）]
+                )  # [batch,d_ff,channel+4]  
                 y = self.dropout(
                     self.conv2(y).transpose(-1, 1)
                 )  # [batch,d_model,channel+4] => transpose [batch,channel+4,d_model]
@@ -164,7 +164,7 @@ class EncoderLayer(nn.Module):
                 # The output information of the three modules is fused
                 x_tree_module_fusion = torch.cat(
                     (x_local_and_global_fusion, x_channel_mix), dim=-1
-                )  # [batch, channel+4, d_model * 3]
+                )  # [batch, channel+4, d_model * 2]
                 x_tree_module_fusion = self.Linear_All_Fusion_ablation_2(
                     x_tree_module_fusion
                 )  # [batch, channel+4, d_model]
@@ -184,7 +184,7 @@ class EncoderLayer(nn.Module):
                 y = self.norm1(x)  # [batch, channel+4, d_model]
                 y = self.dropout(
                     self.activation(self.conv1(y.transpose(-1, 1)))
-                )  # [batch,d_ff,channel+4]  # conv1的意思为输入的通道数为d_model，输出的通道数为d_ff，卷积核大小为1，conv1接受的输入的形状为[batch, d_model（通道数），channel+4（序列长度）]
+                )  # [batch,d_ff,channel+4]  
                 y = self.dropout(
                     self.conv2(y).transpose(-1, 1)
                 )  # [batch,d_model,channel+4] => transpose [batch,channel+4,d_model]
@@ -222,7 +222,7 @@ class EncoderLayer(nn.Module):
                 y = self.norm1(x)  # [batch, channel+4, d_model]
                 y = self.dropout(
                     self.activation(self.conv1(y.transpose(-1, 1)))
-                )  # [batch,d_ff,channel+4]  # conv1的意思为输入的通道数为d_model，输出的通道数为d_ff，卷积核大小为1，conv1接受的输入的形状为[batch, d_model（通道数），channel+4（序列长度）]
+                )  # [batch,d_ff,channel+4]  
                 y = self.dropout(
                     self.conv2(y).transpose(-1, 1)
                 )  # [batch,d_model,channel+4] => transpose [batch,channel+4,d_model]
@@ -243,7 +243,7 @@ class EncoderLayer(nn.Module):
                 y = self.norm1(x)  # [batch, channel+4, d_model]
                 y = self.dropout(
                     self.activation(self.conv1(y.transpose(-1, 1)))
-                )  # [batch,d_ff,channel+4]  # conv1的意思为输入的通道数为d_model，输出的通道数为d_ff，卷积核大小为1，conv1接受的输入的形状为[batch, d_model（通道数），channel+4（序列长度）]
+                )  # [batch,d_ff,channel+4]  
                 y = self.dropout(
                     self.conv2(y).transpose(-1, 1)
                 )  # [batch,d_model,channel+4] => transpose [batch,channel+4,d_model]
@@ -273,7 +273,7 @@ class EncoderLayer(nn.Module):
                 y = self.norm1(x)  # [batch, channel+4, d_model]
                 y = self.dropout(
                     self.activation(self.conv1(y.transpose(-1, 1)))
-                )  # [batch,d_ff,channel+4]  # conv1的意思为输入的通道数为d_model，输出的通道数为d_ff，卷积核大小为1，conv1接受的输入的形状为[batch, d_model（通道数），channel+4（序列长度）]
+                )  # [batch,d_ff,channel+4]  
                 y = self.dropout(
                     self.conv2(y).transpose(-1, 1)
                 )  # [batch,d_model,channel+4] => transpose [batch,channel+4,d_model]
@@ -308,7 +308,7 @@ class EncoderLayer(nn.Module):
                 y = self.norm1(x)  # [batch, channel+4, d_model]
                 y = self.dropout(
                     self.activation(self.conv1(y.transpose(-1, 1)))
-                )  # [batch,d_ff,channel+4]  # conv1的意思为输入的通道数为d_model，输出的通道数为d_ff，卷积核大小为1，conv1接受的输入的形状为[batch, d_model（通道数），channel+4（序列长度）]
+                )  # [batch,d_ff,channel+4]  
                 y = self.dropout(
                     self.conv2(y).transpose(-1, 1)
                 )  # [batch,d_model,channel+4] => transpose [batch,channel+4,d_model]
@@ -341,7 +341,7 @@ class EncoderLayer(nn.Module):
                 y = self.norm1(x)  # [batch, channel+4, d_model]
                 y = self.dropout(
                     self.activation(self.conv1(y.transpose(-1, 1)))
-                )  # [batch,d_ff,channel+4]  # conv1的意思为输入的通道数为d_model，输出的通道数为d_ff，卷积核大小为1，conv1接受的输入的形状为[batch, d_model（通道数），channel+4（序列长度）]
+                )  # [batch,d_ff,channel+4]  
                 y = self.dropout(
                     self.conv2(y).transpose(-1, 1)
                 )  # [batch,d_model,channel+4] => transpose [batch,channel+4,d_model]
@@ -376,7 +376,7 @@ class EncoderLayer(nn.Module):
                 y = self.norm1(x)  # [batch, channel+4, d_model]
                 y = self.dropout(
                     self.activation(self.conv1(y.transpose(-1, 1)))
-                )  # [batch,d_ff,channel+4]  # conv1的意思为输入的通道数为d_model，输出的通道数为d_ff，卷积核大小为1，conv1接受的输入的形状为[batch, d_model（通道数），channel+4（序列长度）]
+                )  # [batch,d_ff,channel+4]  
                 y = self.dropout(
                     self.conv2(y).transpose(-1, 1)
                 )  # [batch,d_model,channel+4] => transpose [batch,channel+4,d_model]
@@ -404,7 +404,7 @@ class EncoderLayer(nn.Module):
                 y = self.norm1(x)  # [batch, channel+4, d_model]
                 y = self.dropout(
                     self.activation(self.conv1(y.transpose(-1, 1)))
-                )  # [batch,d_ff,channel+4]  # conv1的意思为输入的通道数为d_model，输出的通道数为d_ff，卷积核大小为1，conv1接受的输入的形状为[batch, d_model（通道数），channel+4（序列长度）]
+                )  # [batch,d_ff,channel+4]  
                 y = self.dropout(
                     self.conv2(y).transpose(-1, 1)
                 )  # [batch,d_model,channel+4] => transpose [batch,channel+4,d_model]
@@ -430,7 +430,7 @@ class EncoderLayer(nn.Module):
                 y = self.norm1(x)  # [batch, channel+4, d_model]
                 y = self.dropout(
                     self.activation(self.conv1(y.transpose(-1, 1)))
-                )  # [batch,d_ff,channel+4]  # conv1的意思为输入的通道数为d_model，输出的通道数为d_ff，卷积核大小为1，conv1接受的输入的形状为[batch, d_model（通道数），channel+4（序列长度）]
+                )  # [batch,d_ff,channel+4]  
                 y = self.dropout(
                     self.conv2(y).transpose(-1, 1)
                 )  # [batch,d_model,channel+4] => transpose [batch,channel+4,d_model]
@@ -468,7 +468,7 @@ class EncoderLayer(nn.Module):
                 y = self.norm1(x)  # [batch, channel+4, d_model]
                 y = self.dropout(
                     self.activation(self.conv1(y.transpose(-1, 1)))
-                )  # [batch,d_ff,channel+4]  # conv1的意思为输入的通道数为d_model，输出的通道数为d_ff，卷积核大小为1，conv1接受的输入的形状为[batch, d_model（通道数），channel+4（序列长度）]
+                )  # [batch,d_ff,channel+4]  
                 y = self.dropout(
                     self.conv2(y).transpose(-1, 1)
                 )  # [batch,d_model,channel+4] => transpose [batch,channel+4,d_model]
@@ -504,7 +504,7 @@ class EncoderLayer(nn.Module):
                 y = self.norm1(x)  # [batch, channel+4, d_model]
                 y = self.dropout(
                     self.activation(self.conv1(y.transpose(-1, 1)))
-                )  # [batch,d_ff,channel+4]  # conv1的意思为输入的通道数为d_model，输出的通道数为d_ff，卷积核大小为1，conv1接受的输入的形状为[batch, d_model（通道数），channel+4（序列长度）]
+                )  # [batch,d_ff,channel+4]  
                 y = self.dropout(
                     self.conv2(y).transpose(-1, 1)
                 )  # [batch,d_model,channel+4] => transpose [batch,channel+4,d_model]
@@ -549,7 +549,7 @@ class EncoderLayer(nn.Module):
             y = self.norm1(x)  # [batch, channel+4, d_model]
             y = self.dropout(
                 self.activation(self.conv1(y.transpose(-1, 1)))
-            )  # [batch,d_ff,channel+4]  # conv1的意思为输入的通道数为d_model，输出的通道数为d_ff，卷积核大小为1，conv1接受的输入的形状为[batch, d_model（通道数），channel+4（序列长度）]
+            )  # [batch,d_ff,channel+4]  
             y = self.dropout(
                 self.conv2(y).transpose(-1, 1)
             )  # [batch,d_model,channel+4] => transpose [batch,channel+4,d_model]
