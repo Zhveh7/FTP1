@@ -7,9 +7,11 @@ This repository contains the implementation of the paper **"Unifying Channel Ind
 ### FTP
 The overall architecture of FusionTimePatch (FTP). FTP consists of three core components: Dual-GLF introduces CI and CM perspectives in parallel, leveraging multi-scale patch recursion to capture both local and global temporal patterns; the CE module enhances salient channel features and diffuses them across channels, improving sensitivity to anomalies and underlying drivers; the Fusion layer linearly merges the outputs of Dual-GLF and CE, concatenates the result with the original encoder input, propagates the combined representation through the encoder stack, and finally applies an MLP head to produce the forecast. This design enables the synergistic modeling of unified CI/CM perspectives and temporal structures. Below are two types of FTP model diagrams.
 
-![](imgs/StyleA.png)
+![FTP-StyleA](imgs/StyleA.png)
 
-![](imgs/StyleB.png)
+![FTP-StyleB](imgs/StyleB.png)
+
+![FTP-StyleC](imgs/StyleC.png)
 
 ## Environment Requirements
 
@@ -34,7 +36,6 @@ To run the model, execute the scripts located in `./scripts/long_term_forecast/`
 For example, to predict the Weather dataset using FTP, run the following command:
 
 `sh ./scripts/long_term_forecast/Weather_script/Weather_FTP.sh`
-
 
 
 
